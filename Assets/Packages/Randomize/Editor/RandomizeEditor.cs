@@ -20,7 +20,8 @@ public class RandomizeEditor : EditorWindow
     private Vector3 centerPoint, offset;
     public Vector3[] p;
 
-    public bool positionRandom, rotationRandom, scaleRandom, options;
+    public bool positionRandom, rotationRandom, scaleRandom, options, randomSelection;
+    public float percent;
 
     [MenuItem("Tools/Randomize! &R", false, 10)]
     public static void ShowWindow()
@@ -104,9 +105,59 @@ public class RandomizeEditor : EditorWindow
                 RandomizeScale();
             }
         }
+
+        GUILayout.Space(2f);
+        randomSelection = EditorGUILayout.Foldout(randomSelection, "Random Selection");
+        if (randomSelection)
+        {
+            GUILayout.Label("Options:");
+            GUILayout.Space(1f);
+
+            percent = EditorGUILayout.FloatField("Object Persent (0 to 1): ", percent, GUILayout.ExpandWidth(true));
+            if (percent > 1)
+            {
+                percent = 1;
+            }
+            if (percent < 0)
+            {
+                percent = 0;
+            }
+
+            GUILayout.Space(1f);
+            if (GUILayout.Button("Select Random Objects"))
+            {
+                SelectRandomObject();
+            }
+        }
     }
 
     #region Randomize Methods
+
+    private void SelectRandomObject()
+    {
+        if (Selection.gameObjects.Length <= 0)
+        {
+            Debug.Log("Select Objects.");
+            return;
+        }
+
+        Transform[] trans = Selection.GetTransforms(SelectionMode.TopLevel);
+
+        int count = (int)(percent * trans.Length);
+        GameObject[] selectedObjects = new GameObject[count];
+
+        for (int i = 0; i < count; i++)
+        {
+            int rindex = (int)Random.Range(0, trans.Length);
+            while (trans[rindex] == null)
+                rindex = (int)Random.Range(0, trans.Length);
+            selectedObjects[i] = trans[rindex].gameObject;
+            trans[rindex] = null;
+        }
+
+        Selection.objects = selectedObjects;
+        Debug.Log(count + " object selected.");
+    }
 
     void RandomizePosition(bool isSnap = false)
     {
