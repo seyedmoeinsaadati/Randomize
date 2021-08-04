@@ -9,3 +9,4 @@ features:
 
 new features:
 - randomize scale and rotation objects
+- random selection game objects
