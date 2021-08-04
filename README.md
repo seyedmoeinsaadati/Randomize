@@ -23,7 +23,7 @@ If you like this project and/or find it useful, please leave a **Star** on this 
 
 3. Create a temp scene with couple of game objects.
 
-4. Open tools/randomize.
+4. Open tools/randomize. (shortcut key: Alt + R)
 
 5. Select multi objects.
 
