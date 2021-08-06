@@ -13,8 +13,6 @@ If you like this project and/or find it useful, please leave a **Star** on this 
   - Support local or world space
   - Random game objects Selection 
 
-## Showcase
-
 ## How to use?
 
 1. Download latest Randomize package. 
