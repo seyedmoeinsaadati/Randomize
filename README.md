@@ -1,6 +1,6 @@
 # Unity Randomize
 
-<img src="C:\Users\Seyed Moein\Documents\Unity Projects\Unity-Procedural-IK-Wall-Walking-Spider-master\media\unitylogo.png" align="right" height="50px">
+<img src="https://github.com/seyedmoeinsaadati/Randomize/blob/main/media/unitylogo.png" align="right" height="50px">
 
 Randomize Transform in Unity Engine.
 
